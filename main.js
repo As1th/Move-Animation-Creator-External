@@ -229,22 +229,19 @@ function createInsertWindow(){
 //Create Menu Template
 const mainMenuTemplate = [
     {
+        
         label: "File",
         submenu:[
-            {
-                label: 'Load ROM',
-                accelerator: 'CmdOrCtrl+O',
-                click(){
-                    openRom();
-                }
-            },
+           
             {
                 label: 'Quit', 
                 click(){
                     app.quit();
                 }
             }
+        
         ],
+        
     }
 ]
 
@@ -356,7 +353,7 @@ ipcMain.on('form:submit', function(event, attackName, background, scrollType, sc
     var moveData4;
     
     //Check if ROM is open
-    if(rom != null){
+    //if(rom != null){
         //Case 1. User selects Default Background or No Background
         if(background == 'Default' || background == "No Background"){
             moveData1 = getMoveAnimationData(attack1);
@@ -536,10 +533,10 @@ ipcMain.on('form:submit', function(event, attackName, background, scrollType, sc
                 insertWindow.webContents.send('setInsertWindowVariables', bytesNeeded, combinedAnimation);
             });
         }
-    } else {
+    //} else {
         //ROM has not been loaded. Display error message
-        mainWindow.webContents.send('romNotLoaded');
-    }
+    //    mainWindow.webContents.send('romNotLoaded');
+    //}
  });
 
 ipcMain.on('backgroud:change', function(event, data) {
