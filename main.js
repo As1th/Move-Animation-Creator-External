@@ -27,7 +27,7 @@ function createWindow(){
     mainWindow = new BrowserWindow({
         width: 1100,
         height: 800,
-        title:'Move Animation Creator 1.4.1',
+        title:'Move Animation Creator External (Forked from 1.4.1)',
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
@@ -51,7 +51,7 @@ function createWindow(){
     })    
 
     mainWindow.webContents.on('did-finish-load', () => {
-    mainWindow.setTitle("Move Animation Creator 1.4.1")
+    mainWindow.setTitle('Move Animation Creator External (Forked from 1.4.1)')
     })
 }
 
@@ -226,6 +226,8 @@ function createInsertWindow(){
       })
   }
 
+ 
+  
 //Create Menu Template
 const mainMenuTemplate = [
     {
@@ -343,7 +345,7 @@ function determineRomType(rom){
 /////Ipc's
 
 //Create Animation
-ipcMain.on('form:submit', function(event, attackName, background, scrollType, scrollSpeed, removeBlink, attack1, attack2, attack3, attack4, attack1KeepBackground, attack2KeepBackground, attack3KeepBackground, attack4KeepBackground, postAnimation1, postAnimation2, postAnimation3, postAnimation4, preAnimation1, preAnimation2, preAnimation3, preAnimation4, customParticleColour1, customParticleColour2, customParticleColour3, customParticleColour4, particleColour1, particleColour2, particleColour3, particleColour4, particleOpacity1, particleOpacity2, particleOpacity3, particleOpacity4) {
+ipcMain.on('form:submit', function(event, attackName, background, scrollType, scrollSpeed, removeBlink, attack1, attack2, attack3, attack4, attack1KeepBackground, attack2KeepBackground, attack3KeepBackground, attack4KeepBackground, postAnimation1, postAnimation2, postAnimation3, postAnimation4, preAnimation1, preAnimation2, preAnimation3, preAnimation4, customParticleColour1, customParticleColour2, customParticleColour3, customParticleColour4, particleColour1, particleColour2, particleColour3, particleColour4, particleOpacity1, particleOpacity2, particleOpacity3, particleOpacity4, ROM, ) {
     var combinedAnimation;
     var bytesNeeded;
     var psychicBackgroundUsed = false;
@@ -352,9 +354,15 @@ ipcMain.on('form:submit', function(event, attackName, background, scrollType, sc
     var moveData3;
     var moveData4;
     
-    //Check if ROM is open
+    //Check if ROM is open //removed
     //if(rom != null){
         //Case 1. User selects Default Background or No Background
+        if(ROM == "FR")
+        {
+            romType = "Fire Red";
+        } else {
+            romType = "Emerald";
+        }
         if(background == 'Default' || background == "No Background"){
             moveData1 = getMoveAnimationData(attack1);
             moveData1.code = selectAnimationCodeToUse(moveData1);

@@ -27,7 +27,20 @@
                     <hr>
                 </div> --> 
                 <div class="row">
-                    <div class="col"></div>
+                    <div class="col">
+                     Select ROM Type:   
+                     <div class="col-2 mb-3 form-check">
+                     <input class="form-check-input"  type="radio" name="ROM" id="FR" checked>
+                     <label class="form-check-label" for="FR">
+                       FireRed
+                     </label> <input class="form-check-input"  type="radio" name="ROM" id="EM">
+                     <label class="form-check-label" for="EM">
+                       Emerald
+                     </label>
+
+                     </div>
+                    
+                    </div>
                     <div class="col-6 mb-3">
                         <label for="background" class="form-label fw-bold" >Select Background</label>
                         <select class="form-select" id="select-background"  aria-label="Default select example">
@@ -198,7 +211,7 @@
                                 <option id="4" value="Air Cutter Start">Air Cutter Start</option>
                                 <option id="5" value="Ancientpower Lift Rocks">Ancientpower Lift Rocks</option>
                                 <option id="22" value="Charm">Charm</option>
-                                <option id="10" value="Destiny Bond Surface">Destiny Bond Surface</option>
+                                <option id="10" value="Destiny Bond Surace">Destiny Bond Surface</option>
                                 <option id="24" value="Fade But Not You">Fade But Not You</option>
                                 <option id="7" value="Hearts User">Hearts User</option>
                                 <option id="28" value="Invert Background">Invert Background</option>
@@ -2848,6 +2861,13 @@
         })
 
         function submitForm(e){
+            var ROM;
+            if(document.getElementById('FR').checked){
+                ROM = "FR"
+            } else {
+                ROM = "EM"
+            }
+
             e.preventDefault();
          //   const attackName = document.querySelector('#attackName').value
             const attackName = "nothing"
@@ -2922,7 +2942,7 @@
                 customParticleColour4 = "Custom"
             }
 
-            ipcRenderer.send('form:submit', attackName, background, scrollType, scrollSpeed, removeBlink, attack1, attack2, attack3, attack4, attack1KeepBackground, attack2KeepBackground, attack3KeepBackground, attack4KeepBackground, postAnimation1, postAnimation2, postAnimation3, postAnimation4, preAnimation1, preAnimation2, preAnimation3, preAnimation4, customParticleColour1, customParticleColour2, customParticleColour3, customParticleColour4, particleColour1, particleColour2, particleColour3, particleColour4, particleOpacity1, particleOpacity2, particleOpacity3, particleOpacity4);
+            ipcRenderer.send('form:submit', attackName, background, scrollType, scrollSpeed, removeBlink, attack1, attack2, attack3, attack4, attack1KeepBackground, attack2KeepBackground, attack3KeepBackground, attack4KeepBackground, postAnimation1, postAnimation2, postAnimation3, postAnimation4, preAnimation1, preAnimation2, preAnimation3, preAnimation4, customParticleColour1, customParticleColour2, customParticleColour3, customParticleColour4, particleColour1, particleColour2, particleColour3, particleColour4, particleOpacity1, particleOpacity2, particleOpacity3, particleOpacity4, ROM);
         }
 
     </script>
