@@ -1,7 +1,7 @@
-# Move-Animation-Creator
-
-This application allows you to create your own move animations for Fire Red by combining and manipulating existing animations. You can combine up to 4 move animations 
-
+# Move-Animation-Creator-External
+A fork of [Move Animation Creator](https://github.com/Matteo-Buonastella/Move-Animation-Creator/tree/master) that does not inject the animation code into the ROM.
+When using the original method alongside [HexManiacAdvance](https://github.com/haven1433/HexManiacAdvance), compatability issues arise from both tools accessing the same ROM file at once. This fork provides a workaround that allows users to work in both tools at the same time by removing Move Animation Creator's need to access the ROM. Instead, the generated animation bytes are delivered as text for the user to copy and insert into the ROM using HexManiacAdvance via a simple paste.
+The ROM type (FireRed/Emerald) must now be selected manually in the top-left corner of the program.
 ## Selecting a Background
 A dropdown list is provided with all the backgrouds for you to choose from. Below are some details on the options provided. If you select a background for your animation, the default behavior for this application is the following: First it will go through each move animation that you chose and remove it's background (if possible), including colored backgrounds. Secondly, it will combine all the animations together so that they are played in sequence. Lastly, the background you chose will be applied to the start of the animation and will be used for the entire sequence, unless specified otherwise via the Keep Background checkbox explained below
 
