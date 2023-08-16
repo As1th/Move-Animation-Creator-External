@@ -1,8 +1,10 @@
+
 {
   "name": "moveanimator",
   "version": "1.4.1",
   "description": "Create Move Animations for Fire Red",
   "main": "main.js",
+ 
   "scripts": {
     "start": "electron-forge start",
     "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
@@ -11,7 +13,9 @@
     "package": "electron-forge package",
     "make": "electron-forge make"
   },
+ 
   "author": "ortz3",
+  "contributors": ["Asith"],
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^5.0.2",
@@ -28,4 +32,5 @@
     "@electron-forge/plugin-auto-unpack-natives": "^6.3.0",
     "electron": "^26.0.0"
   }
+ 
 }
