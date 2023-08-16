@@ -63,7 +63,7 @@ function createInsertWindow(){
       show: false,
       width: 290,
       height: 270,
-      title:'Insert Animation',
+      title:'Animation Result',
       webPreferences: {
         nodeIntegration: true,
         contextIsolation: false,
@@ -432,7 +432,7 @@ ipcMain.on('form:submit', function(event, attackName, background, scrollType, sc
             bytesNeeded = getBytesNeeded(combinedAnimation)
             createInsertWindow();
             insertWindow.webContents.on('did-finish-load', function () {
-                insertWindow.webContents.send('setInsertWindowVariables', bytesNeeded, combinedAnimation);
+                insertWindow.webContents.send('setInsertWindowVariables', bytesNeeded, romType, combinedAnimation);
             });   
         } 
         //CASE 2 User selects a specific Background. 
@@ -538,7 +538,7 @@ ipcMain.on('form:submit', function(event, attackName, background, scrollType, sc
             bytesNeeded = getBytesNeeded(combinedAnimation);
             createInsertWindow();
             insertWindow.webContents.on('did-finish-load', function () {
-                insertWindow.webContents.send('setInsertWindowVariables', bytesNeeded, combinedAnimation);
+                insertWindow.webContents.send('setInsertWindowVariables', bytesNeeded, romType, combinedAnimation);
             });
         }
     //} else {

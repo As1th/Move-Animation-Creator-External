@@ -97,9 +97,10 @@ ipcRenderer.on('keepBackgroundCheckbox', (event, backgroundName) => {
 });
 
 /////////////Insert Animation///////////////////
-ipcRenderer.on('setInsertWindowVariables', (event, bytes, hex) => {
+ipcRenderer.on('setInsertWindowVariables', (event, bytes, romType, hex) => {
     document.getElementById("bytesNeeded").innerText = bytes;
-    document.getElementById("hex").value = hex;
+    document.getElementById("ROM").innerText = romType;
+    document.getElementById("output").value = hex;
 });
 
 ipcRenderer.on('setInputMemoryOffset', (event, memoryOffset) => {

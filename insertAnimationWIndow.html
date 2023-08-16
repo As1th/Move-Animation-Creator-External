@@ -12,7 +12,7 @@
         <div class="container mt-2">
             <div class="row">
                 <div class="col">
-                    <button type="submit" id="searchFreeSpaceBtn" class="btn-sm btn-primary mb-2">Find Free Space</button>
+                    <p>Selected ROM: <strong><span id="ROM"></span></strong></p>
                     <p>Bytes Needed: <strong><span id="bytesNeeded"></span></strong></p>
                 </div>
             </div>
@@ -20,12 +20,17 @@
                 <div class="row">
                     <div class="col">   
                         <div class="mb-3">
+                            <!--
                             <label for="offset" class="form-label" >Memory Offset:</label>
                             <input type="text" class="form-control" id="offset" placeholder="Ex: 82748A" required>
                             <input type="hidden" id="hex" />
+                            -->
+                            <label for="output" class="form-label" >Code:</label>
+                            <input type="text" class="form-control" id="output" readonly required>
+                            <input type="hidden" id="hex" />
                         </div>
                         <div  class="text-center">
-                            <button type="submit" id="insertButton" class="btn-sm btn-success"> Insert </button> 
+                            <button type="submit" id="insertButton" class="btn-sm btn-success"> Copy Code </button> 
                         </div>
                     </div>
                 </div>
@@ -35,6 +40,7 @@
         <script>
             require('./renderer.js');
             const electron = require('electron')
+            const { clipboard } = require('electron')
             const {ipcRenderer} = electron
 
             const form = document.querySelector('form');
@@ -43,20 +49,17 @@
             function submitForm(e){
                 e.preventDefault();
 
-                //Disable submit
-                document.getElementById('insertButton').disabled = true;
+                //document.getElementById('insertButton').disabled = true;
+                var hex = document.getElementById("output");
+                hex.select();
+                clipboard.writeText(hex.value);
+                alert("Copied to Clipboard.");
 
-                const memoryOffset = document.querySelector('#offset').value
-                const hex = document.querySelector('#hex').value
 
-                ipcRenderer.send('form:insertAnimationSubmit', memoryOffset, hex);
+               // ipcRenderer.send('form:insertAnimationSubmit', memoryOffset, hex);
             }
 
-            var btn = document.getElementById('searchFreeSpaceBtn');
-            btn.addEventListener('click', function (event) {
-                const bytesNeeded = document.querySelector('#bytesNeeded').innerText
-                ipcRenderer.send('button:searchFreeSpace', bytesNeeded);
-            });
+           
 
         </script>
         
